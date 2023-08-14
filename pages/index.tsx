@@ -1,7 +1,23 @@
 import Head from "next/head";
+import { useState } from "react";
 import { RandomFox } from "@/components/random_fox"
 
+// Generate a random number between 1 and 123
+const random = () : Number => Math.floor(Math.random() * 123) + 1;
+
+// Generate simple unique id
+const generateId = () => Math.random().toString(36).substring(2, 9);
+
+type ImageItem = {id: string, url: string};
+
 export default function Home() {
+  const [images, setImages] = useState<Array<ImageItem>>([
+    {id: generateId(), url: `https://randomfox.ca/images/${random()}.jpg`},
+    {id: generateId(),  url: `https://randomfox.ca/images/${random()}.jpg`},
+    {id: generateId(),  url: `https://randomfox.ca/images/${random()}.jpg`},
+    {id: generateId(),  url: `https://randomfox.ca/images/${random()}.jpg`}
+  ]);
+
   return (
 
     <div>
@@ -14,7 +30,13 @@ export default function Home() {
         <h1 className="text-3xl font-bold underline">
           Hello world!
         </h1>
-        <RandomFox/>
+
+        {images.map((_imageItem) => (
+          <div key={_imageItem.id} className="p-4">
+            <RandomFox image={_imageItem.url}/>
+          </div>
+        ))}
+
       </main>
 
       <footer>

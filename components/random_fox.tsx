@@ -1,16 +1,20 @@
-import type { FunctionComponent, FC } from 'react';
+import { useRef } from 'react';
+
+type Props = {image: string};
+
+export const RandomFox = ({ image }: Props) : JSX.Element => {
+    const node = useRef<HTMLImageElement>(null);
+    
+    return <img ref={node} width={320} height='auto' src={image} className='rounded'/>
+}
+
+// import type { FunctionComponent, FC } from 'react';
 
 //Implicito
 // export const RandomFox = () => {
 //     return <img />
 // }
 
-type Props = {image: string};
-
-export const RandomFox = ({ image }: Props) : JSX.Element => {
-
-    return <img width={320} height='auto' src={image} className='rounded'/>
-}
 
 // Declarar utilizando los tipos de la libreria
 

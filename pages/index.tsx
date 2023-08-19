@@ -1,15 +1,17 @@
 import Head from "next/head";
 import type { MouseEventHandler } from "react";
 import {  useState } from "react";
+import { random } from 'lodash';
 import { LazyImage } from "@/components/random_fox"
 
 // Generate a random number between 1 and 123
-const random = () : Number => Math.floor(Math.random() * 123) + 1;
+// const random = () : Number => Math.floor(Math.random() * 123) + 1;
+const myRandom = () => random(1, 123);
 
 // Generate simple unique id
 const generateId = () => Math.random().toString(36).substring(2, 9);
-
-type ImageItem = {id: string, url: string};
+// Esta referenciado en app.d.ts
+// type ImageItem = {id: string, url: string};
 
 export default function Home() {
   const [images, setImages] = useState<Array<ImageItem>>([]);
@@ -18,7 +20,7 @@ export default function Home() {
     
     const newImageItem : ImageItem = {
       id: generateId(),
-      url: `https://randomfox.ca/images/${random()}.jpg`
+      url: `https://randomfox.ca/images/${myRandom()}.jpg`
     };
 
     setImages([

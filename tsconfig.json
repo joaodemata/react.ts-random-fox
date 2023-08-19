@@ -20,6 +20,6 @@
     "noImplicitAny": true,
     "noImplicitReturns": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"], // Agregar aqui si hace falta agregar archivo de tipos
   "exclude": ["node_modules"]
 }
